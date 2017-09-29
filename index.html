@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html class="nojs html css_verticalspacer" lang="ru-RU">
+ <head>
+
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+  <meta name="generator" content="2015.2.1.352"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <script type="text/javascript">
+   // Update the 'nojs'/'js' class on the html node
+document.documentElement.className = document.documentElement.className.replace(/\bnojs\b/g, 'js');
+
+// Check that all required assets are uploaded and up-to-date
+if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required":["jquery-1.8.3.min.js", "museutils.js", "museconfig.js", "jquery.watch.js", "jquery.museresponsive.js", "require.js", "index.css"], "outOfDate":[]};
+</script>
+  
+  <title>leporel</title>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="css/site_global.css?crc=4134274258"/>
+  <link rel="stylesheet" type="text/css" href="css/index.css?crc=3868605228" id="pagesheet"/>
+  <!-- IE-only CSS -->
+  <!--[if lt IE 9]>
+  <link rel="stylesheet" type="text/css" href="css/nomq_index.css?crc=145303964" id="nomq_pagesheet"/>
+  <![endif]-->
+  <!-- Other scripts -->
+  <script type="text/javascript">
+   var __adobewebfontsappname__ = "muse";
+</script>
+  <!-- JS includes -->
+  <script type="text/javascript">
+   document.write('\x3Cscript src="' + (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//webfonts.creativecloud.com/play:n4:all.js" type="text/javascript">\x3C/script>');
+</script>
+    <!--custom head HTML-->
+  <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+<script src="Безымянный-5.js"></script>
+<script>
+var canvas, stage, exportRoot;
+function init() {
+	canvas = document.getElementById("canvas");
+	images = images||{};
+	ss = ss||{};
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", handleFileLoad);
+	loader.addEventListener("complete", handleComplete);
+	loader.loadManifest(lib.properties.manifest);
+}
+function handleFileLoad(evt) {	
+	if (evt.item.type == "image") { images[evt.item.id] = evt.result; }	
+}
+function handleComplete(evt) {
+	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+	var queue = evt.target;
+	var ssMetadata = lib.ssMetadata;
+	for(i=0; i<ssMetadata.length; i++) {
+		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+	}
+	exportRoot = new lib.Безымянный5();
+	stage = new createjs.Stage(canvas);
+	stage.addChild(exportRoot);	
+	//Registers the "tick" event listener.
+	createjs.Ticker.setFPS(lib.properties.fps);
+	createjs.Ticker.addEventListener("tick", stage);	    
+	//Code to support hidpi screens and responsive scaling.
+	(function(isResp, respDim, isScale, scaleType) {		
+		var lastW, lastH, lastS=1;		
+		window.addEventListener('resize', resizeCanvas);		
+		resizeCanvas();		
+		function resizeCanvas() {			
+			var w = lib.properties.width, h = lib.properties.height;			
+			var iw = window.innerWidth, ih=window.innerHeight;			
+			var pRatio = window.devicePixelRatio, xRatio=iw/w, yRatio=ih/h, sRatio=1;			
+			if(isResp) {                
+				if((respDim=='width'&&lastW==iw) || (respDim=='height'&&lastH==ih)) {                    
+					sRatio = lastS;                
+				}				
+				else if(!isScale) {					
+					if(iw<w || ih<h)						
+						sRatio = Math.min(xRatio, yRatio);				
+				}				
+				else if(scaleType==1) {					
+					sRatio = Math.min(xRatio, yRatio);				
+				}				
+				else if(scaleType==2) {					
+					sRatio = Math.max(xRatio, yRatio);				
+				}			
+			}			
+			canvas.width = w*pRatio*sRatio;			
+			canvas.height = h*pRatio*sRatio;
+			canvas.style.width = w*sRatio+'px';			
+			canvas.style.height = h*sRatio+'px';
+			stage.scaleX = pRatio*sRatio;			
+			stage.scaleY = pRatio*sRatio;			
+			lastW = iw; lastH = ih; lastS = sRatio;		
+		}
+	})(true,'both',true,2);	
+}
+</script>
+
+<style>
+		
+html {
+color: #ffffff;
+font-size: 18px;
+background-size: cover;
+}
+
+body
+{
+background-color: #000000;
+}
+
+.buttonText {
+  color: #fff;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 50px;
+  font-family: Play;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+ 
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #7396ff;
+}
+
+#button1 {
+  background: rgba(0, 0, 0, 0.0);
+  border: 2px solid rgba(102,102,102,0.8);
+  height: 53px;
+  width: 53px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 3px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+	
+  /*Rounded Corners*/
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+ 
+  /*Gradient*/
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.0));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.0));
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.0));
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.0));
+  
+  /*Transition*/
+  -webkit-transition: All 0.5s ease;
+  -moz-transition: All 0.5s ease;
+  -o-transition: All 0.5s ease;
+  -ms-transition: All 0.5s ease;
+  transition: All 0.5s ease;
+  
+}  
+
+#button1:hover {
+  width: 200px;
+  background: rgba(102,102,102,0.4);
+}
+
+
+#button2
+{
+  background: rgba(0, 0, 0, 0.0);
+  border: 2px solid rgba(102,102,102,0.0);
+  min-width: 25px;
+  min-height: 25px;
+  margin: 0px 0px 0px 0px;
+  display: inline-block;
+  vertical-align: middle;
+  position:float;
+  
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+} 
+
+#button2:hover {
+  // border: 2px solid rgba(102,102,102,0.9);
+  // background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 1.0);
+  color: #265cff;
+}
+
+.button2Text {
+  color: #fff;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 25px;
+  font-family: Play;
+  font-weight: 600;
+}
+
+.buttonText2 {
+  color: #fff;
+  display: inline-block;
+  text-align: center;
+  font-family: Play;  
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+#canvas {
+position:absolute;
+margin:auto;
+left:-100%;
+right:-100%;
+background-color:rgba(0, 0, 0, 1.00);
+max-height: 1279px;
+max-width: 2027px;
+}
+
+</style>
+
+<link href="https://fonts.googleapis.com/css?family=Play|Handlee" rel="stylesheet">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+ </head>
+ <body onload="init();">
+
+  <div class="breakpoint active" id="bp_infinity" data-min-width="1701"><!-- responsive breakpoint node -->
+   <div class="clearfix borderbox" id="page"><!-- column -->
+    <div class="browser_width shared_content" id="u2320-bw" data-content-guid="u2320-bw_content">
+     <div class="pinned-colelem" id="u2320"><!-- custom html -->
+      <canvas id="canvas" width="2027" height="1279" style=""></canvas>
+     </div>
+    </div>
+    <div class="clearfix colelem" id="pu1225-4"><!-- group -->
+     <div class="clearfix grpelem shared_content" id="u1225-4" data-content-guid="u1225-4_content"><!-- content -->
+      <p>/social</p>
+     </div>
+     <div class="clearfix grpelem shared_content" id="u1322-4" data-content-guid="u1322-4_content"><!-- content -->
+      <p>/media</p>
+     </div>
+     <div class="clearfix grpelem shared_content" id="u101-4" data-content-guid="u101-4_content"><!-- content -->
+      <p>/games</p>
+     </div>
+     <div class="clearfix grpelem shared_content" id="u100-4" data-content-guid="u100-4_content"><!-- content -->
+      <p>/stats</p>
+     </div>
+    </div>
+    <div class="clearfix colelem" id="pu1271"><!-- group -->
+     <div class="grpelem shared_content" id="u1271" data-content-guid="u1271_content"><!-- custom html -->
+      <span id="button1" class="buttonText">
+<i class="fa fa-vk" style="font-size: 36px; line-height: 52px; padding:0px;  float:left;width:50px;height:50px;"></i>
+<a href="https://vk.com/leporel">
+<span style="margin-right: 25px;">Vkontakte</span><i class="fa fa-external-link" style="font-size: 14px;" ></i>
+</a>
+</span>
+     </div>
+     <div class="grpelem shared_content" id="u1305" data-content-guid="u1305_content"><!-- custom html -->
+      <span id="button1" class="buttonText">
+<i class="fa fa-flickr" style="font-size: 38px; line-height: 55px; padding:0px;  float:left;width:50px;height:50px;"></i>
+<a href="https://www.flickr.com/people/leporel/">
+<span style="margin-right: 25px;">Flickr</span><i class="fa fa-external-link" style="font-size: 14px;" ></i>
+</a>
+</span>
+
+     </div>
+     <div class="grpelem shared_content" id="u95" data-content-guid="u95_content"><!-- custom html -->
+      <span id="button1" class="buttonText">
+
+<i class="fa fa-steam" style="font-size: 38px; line-height: 50px; padding:0px;  float:left;width:50px;height:50px;"></i>
+<a href="http://steamcommunity.com/id/bzlep">
+<span style="margin-right: 25px;">Steam</span><i class="fa fa-external-link" style="font-size: 14px;" ></i>
+</a>
+</span>
+
+     </div>
+     <div class="grpelem shared_content" id="u98" data-content-guid="u98_content"><!-- custom html -->
+      <span id="button1" class="buttonText">
+<i class="fa fa-lastfm" style="font-size: 38px; line-height: 50px; padding:0px;  float:left;width:50px;height:50px;"></i>
+<a href="http://www.last.fm/ru/user/leporel">
+<span style="margin-right: 25px;">Last.Fm</span><i class="fa fa-external-link" style="font-size: 14px;" ></i>
+</a>
+</span>
+     </div>
+    </div>
+    <div class="clearfix colelem" id="pu1254"><!-- group -->
+     <div class="grpelem shared_content" id="u1254" data-content-guid="u1254_content"><!-- custom html -->
+      <span id="button1" class="buttonText">
+<i class="fa fa-facebook" style="font-size: 38px; line-height: 52px; padding:0px;  float:left;width:50px;height:50px;"></i>
+<a href="https://www.facebook.com/leporel">
+<span style="margin-right: 25px;">Facebook</span><i class="fa fa-external-link" style="font-size: 14px;" ></i>
+</a>
+</span>
+     </div>
+     <div class="grpelem shared_content" id="u1288" data-content-guid="u1288_content"><!-- custom html -->
+      <span id="button1" class="buttonText">
+<i class="fa fa-instagram" style="font-size: 38px; line-height: 55px; padding:0px;  float:left;width:50px;height:50px;"></i>
+<a href="https://www.instagram.com/mrleporel/">
+<span style="margin-right: 25px;">Instagram</span><i class="fa fa-external-link" style="font-size: 14px;" ></i>
+</a>
+</span>
+     </div>
+     <div class="grpelem shared_content" id="u97" data-content-guid="u97_content"><!-- custom html -->
+      <span id="button1" class="buttonText">
+
+<i class="fa fa-twitch" style="font-size: 36px; line-height: 57px; padding:0px 0px 0px 1px;  float:left;width:50px;height:50px;"></i>
+<a href="https://www.twitch.tv/leporel">
+<span style="margin-right: 25px;">Twitch</span><i class="fa fa-external-link" style="font-size: 14px;" ></i>
+</a>
+</span>
+     </div>
+     <div class="grpelem shared_content" id="u94" data-content-guid="u94_content"><!-- custom html -->
+      <span id="button1" class="buttonText">
+<i class="fa fa-film" style="font-size: 34px; line-height: 53px; padding:0px;  float:left;width:50px;height:50px;"></i>
+<a href="https://www.kinopoisk.ru/user/13631567">
+<span style="margin-right: 25px;">Kinopoisk</span><i class="fa fa-external-link" style="font-size: 14px;" ></i>
+</a>
+</span>
+     </div>
+    </div>
+    <div class="clearfix colelem shared_content" id="pu1331" data-content-guid="pu1331_content"><!-- group -->
+     <div class="grpelem shared_content" id="u1331" data-content-guid="u1331_content"><!-- custom html -->
+      <span id="button1" class="buttonText">
+<i class="fa fa-deviantart" style="font-size: 38px; line-height: 55px; padding:0px;  float:left;width:50px;height:50px;"></i>
+<a href="http://arachnid777.deviantart.com/">
+<span style="margin-right: 25px;">Deviantart</span><i class="fa fa-external-link" style="font-size: 14px;" ></i>
+</a>
+</span>
+     </div>
+     <div class="grpelem shared_content" id="u96" data-content-guid="u96_content"><!-- custom html -->
+      <span id="button1" class="buttonText">
+<i class="fa fa-moon-o" style="font-size: 38px; line-height: 55px; padding:0px;  float:left;width:50px;height:50px;"></i>
+<a href="https://myanimelist.net/profile/leporel">
+<span style="margin-right: 3px;">MyAnimeList</span><i class="fa fa-external-link" style="font-size: 14px;" ></i>
+</a>
+</span>
+     </div>
+    </div>
+    <div class="clearfix colelem shared_content" id="pu99" data-content-guid="pu99_content"><!-- group -->
+     <div class="grpelem shared_content" id="u99" data-content-guid="u99_content"><!-- custom html -->
+      <span id="button1" class="buttonText2">
+
+<i class="fa fa-youtube" style="font-size: 36px; line-height: 52px; padding:0px 0px 0px 1px;  float:left;width:50px;height:50px;"></i>
+<span style="margin-right: 0px; vertical-align: -3px;" >Youtube</span>
+<br>
+<span style="margin: 0px 0px 0px -5px;" >
+<a href="https://www.youtube.com/user/leporel777" id="button2" class="button2Text"><i class="fa fa-gamepad" style="font-size: 24px; line-height: 15px; padding: 4px;"></i></a>
+&nbsp;
+<a href="https://www.youtube.com/channel/UCwwxWkKBYxP-AHdpL2Q5GoQ" id="button2" class="button2Text"><i class="fa fa-podcast" style="font-size: 20px; line-height: 15px; padding: 4px;"></i></a>
+</span>
+&nbsp;
+<a href="https://www.youtube.com/channel/UCj3XOaaWCOjGc_9MmTZu03w" id="button2" class="button2Text"><i class="fa fa-user" style="font-size: 20px; line-height: 15px; padding: 4px;"></i></a>
+</span>
+</span>
+
+     </div>
+     <div class="grpelem shared_content" id="u2540" data-content-guid="u2540_content"><!-- custom html -->
+      <span id="button1" class="buttonText">
+<i class="fa fa-bomb" style="font-size: 38px; line-height: 55px; padding:0px;  float:left;width:50px;height:50px;"></i>
+<a href="http://www.gamespot.com/profile/popapo/stacks/">
+<span style="margin-right: 25px;">Gamespot</span><i class="fa fa-external-link" style="font-size: 14px;" ></i>
+</a>
+</span>
+     </div>
+    </div>
+    <div class="colelem shared_content" id="u2577" data-content-guid="u2577_content"><!-- custom html -->
+<span style="font-family: 'Handlee', cursive; letter-spacing: 0.5px; font-size: 18px;">
+#feedback <br> { <br>
+<ul class="fa-ul">
+<a class="list-group-item" href="https://discord.gg/FnKBHAE" title="Discord App" onmouseover="this.style.fill='#7396ff';" onmouseout="this.style.fill='#ffffff';" style="fill: rgb(255, 255, 255);"><li>
+  
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" x="0px" y="0px" height="18px" viewBox="0 0 48 48" class="icon icons8-Discord" >
+<g id="surface1">
+<path style="" d="M 40 12 C 40 12 35.414063 8.410156 30 8 L 29.511719 8.976563 C 34.40625 10.175781 36.652344 11.890625 39 14 C 34.953125 11.933594 30.960938 10 24 10 C 17.039063 10 13.046875 11.933594 9 14 C 11.347656 11.890625 14.019531 9.984375 18.488281 8.976563 L 18 8 C 12.320313 8.535156 8 12 8 12 C 8 12 2.878906 19.425781 2 34 C 7.160156 39.953125 15 40 15 40 L 16.640625 37.816406 C 13.855469 36.847656 10.714844 35.121094 8 32 C 11.238281 34.449219 16.125 37 24 37 C 31.875 37 36.761719 34.449219 40 32 C 37.285156 35.121094 34.144531 36.847656 31.359375 37.816406 L 33 40 C 33 40 40.839844 39.953125 46 34 C 45.121094 19.425781 40 12 40 12 Z M 17.5 30 C 15.566406 30 14 28.210938 14 26 C 14 23.789063 15.566406 22 17.5 22 C 19.433594 22 21 23.789063 21 26 C 21 28.210938 19.433594 30 17.5 30 Z M 30.5 30 C 28.566406 30 27 28.210938 27 26 C 27 23.789063 28.566406 22 30.5 22 C 32.433594 22 34 23.789063 34 26 C 34 28.210938 32.433594 30 30.5 30 Z "></path>
+</g></svg>
+	
+  &nbsp;Discord </li> </a> 
+  <a class="list-group-item" href="https://app.twitch.tv/leporel" title="Twitch App"><li>
+  <i class="fa fa-twitch"></i>
+  &nbsp;Twitch (Curse) </li> </a>
+	<br>
+  <a class="list-group-item" href="https://twitter.com/leporel777" title="Twitter"><li><i class="fa fa-twitter fa-fw" ></i>&nbsp;@leporel777 </li></a> 
+  <a class="list-group-item" href="mailto:leporel777@gmail.com" title="Email"><li><i class="fa fa-envelope fa-fw" ></i>&nbsp;leporel777@gmail.com </li></a> 
+	<br>
+  <a class="list-group-item" href="https://money.yandex.ru/to/41001989361470" title="Кошелек"><li><i class="fa fa-rub fa-fw" ></i>&nbsp;Yandex.Money </li></a> 
+  <a class="list-group-item" href="https://paypal.me/leporel" title="Кошелек"><li><i class="fa fa-paypal fa-fw" ></i>&nbsp;PayPal </li></a> 
+</ul>
+}
+</span>
+	    
+    </div>
+    <div class="verticalspacer" data-offset-top="835" data-content-above-spacer="834" data-content-below-spacer="62"></div>
+   </div>
+  </div>
+  <div class="breakpoint" id="bp_1700" data-min-width="1076" data-max-width="1700"><!-- responsive breakpoint node -->
+   <div class="clearfix borderbox temp_no_id" data-orig-id="page"><!-- column -->
+    <span class="browser_width placeholder" data-placeholder-for="u2320-bw_content"><!-- placeholder node --></span>
+    <div class="clearfix colelem temp_no_id" data-orig-id="pu1225-4"><!-- group -->
+     <span class="clearfix grpelem placeholder" data-placeholder-for="u1225-4_content"><!-- placeholder node --></span>
+     <span class="clearfix grpelem placeholder" data-placeholder-for="u101-4_content"><!-- placeholder node --></span>
+    </div>
+    <div class="clearfix colelem temp_no_id" data-orig-id="pu1271"><!-- group -->
+     <span class="grpelem placeholder" data-placeholder-for="u1271_content"><!-- placeholder node --></span>
+     <span class="grpelem placeholder" data-placeholder-for="u95_content"><!-- placeholder node --></span>
+    </div>
+    <div class="clearfix colelem temp_no_id" data-orig-id="pu1254"><!-- group -->
+     <span class="grpelem placeholder" data-placeholder-for="u1254_content"><!-- placeholder node --></span>
+     <span class="grpelem placeholder" data-placeholder-for="u97_content"><!-- placeholder node --></span>
+    </div>
+    <div class="clearfix colelem" id="pu1322-4"><!-- group -->
+     <span class="clearfix grpelem placeholder" data-placeholder-for="u1322-4_content"><!-- placeholder node --></span>
+     <span class="clearfix grpelem placeholder" data-placeholder-for="u100-4_content"><!-- placeholder node --></span>
+    </div>
+    <div class="clearfix colelem" id="pu1305"><!-- group -->
+     <span class="grpelem placeholder" data-placeholder-for="u1305_content"><!-- placeholder node --></span>
+     <span class="grpelem placeholder" data-placeholder-for="u98_content"><!-- placeholder node --></span>
+    </div>
+    <div class="clearfix colelem" id="pu1288"><!-- group -->
+     <span class="grpelem placeholder" data-placeholder-for="u1288_content"><!-- placeholder node --></span>
+     <span class="grpelem placeholder" data-placeholder-for="u94_content"><!-- placeholder node --></span>
+    </div>
+    <span class="clearfix colelem placeholder" data-placeholder-for="pu1331_content"><!-- placeholder node --></span>
+    <span class="clearfix colelem placeholder" data-placeholder-for="pu99_content"><!-- placeholder node --></span>
+    <span class="colelem placeholder" data-placeholder-for="u2577_content"><!-- placeholder node --></span>
+    <div class="verticalspacer" data-offset-top="760" data-content-above-spacer="759" data-content-below-spacer="62"></div>
+   </div>
+  </div>
+  <div class="breakpoint" id="bp_1075" data-min-width="471" data-max-width="1075"><!-- responsive breakpoint node -->
+   <div class="clearfix borderbox temp_no_id" data-orig-id="page"><!-- column -->
+    <div class="clearfix colelem temp_no_id" data-orig-id="pu1225-4"><!-- group -->
+     <span class="clearfix grpelem placeholder" data-placeholder-for="u1225-4_content"><!-- placeholder node --></span>
+     <span class="clearfix grpelem placeholder" data-placeholder-for="u101-4_content"><!-- placeholder node --></span>
+    </div>
+    <div class="clearfix colelem temp_no_id" data-orig-id="pu1271"><!-- group -->
+     <span class="grpelem placeholder" data-placeholder-for="u1271_content"><!-- placeholder node --></span>
+     <span class="grpelem placeholder" data-placeholder-for="u95_content"><!-- placeholder node --></span>
+    </div>
+    <div class="clearfix colelem temp_no_id" data-orig-id="pu1254"><!-- group -->
+     <span class="grpelem placeholder" data-placeholder-for="u1254_content"><!-- placeholder node --></span>
+     <span class="grpelem placeholder" data-placeholder-for="u97_content"><!-- placeholder node --></span>
+    </div>
+    <div class="clearfix colelem" id="pu100-4"><!-- group -->
+     <span class="clearfix grpelem placeholder" data-placeholder-for="u100-4_content"><!-- placeholder node --></span>
+     <span class="clearfix grpelem placeholder" data-placeholder-for="u1322-4_content"><!-- placeholder node --></span>
+    </div>
+    <div class="clearfix colelem" id="pu98"><!-- group -->
+     <span class="grpelem placeholder" data-placeholder-for="u98_content"><!-- placeholder node --></span>
+     <span class="grpelem placeholder" data-placeholder-for="u1305_content"><!-- placeholder node --></span>
+    </div>
+    <div class="clearfix colelem" id="pu94"><!-- group -->
+     <span class="grpelem placeholder" data-placeholder-for="u94_content"><!-- placeholder node --></span>
+     <span class="grpelem placeholder" data-placeholder-for="u1288_content"><!-- placeholder node --></span>
+    </div>
+    <div class="clearfix colelem" id="pu96"><!-- group -->
+     <span class="grpelem placeholder" data-placeholder-for="u96_content"><!-- placeholder node --></span>
+     <span class="grpelem placeholder" data-placeholder-for="u1331_content"><!-- placeholder node --></span>
+    </div>
+    <div class="clearfix colelem" id="pu2540"><!-- group -->
+     <span class="grpelem placeholder" data-placeholder-for="u2540_content"><!-- placeholder node --></span>
+     <span class="grpelem placeholder" data-placeholder-for="u99_content"><!-- placeholder node --></span>
+    </div>
+    <span class="colelem placeholder" data-placeholder-for="u2577_content"><!-- placeholder node --></span>
+    <div class="verticalspacer" data-offset-top="743" data-content-above-spacer="742" data-content-below-spacer="62"></div>
+   </div>
+  </div>
+  <div class="breakpoint" id="bp_470" data-max-width="470"><!-- responsive breakpoint node -->
+   <div class="clearfix borderbox temp_no_id" data-orig-id="page"><!-- column -->
+    <span class="clearfix colelem placeholder" data-placeholder-for="u1225-4_content"><!-- placeholder node --></span>
+    <span class="colelem placeholder" data-placeholder-for="u1271_content"><!-- placeholder node --></span>
+    <span class="colelem placeholder" data-placeholder-for="u1254_content"><!-- placeholder node --></span>
+    <span class="clearfix colelem placeholder" data-placeholder-for="u1322-4_content"><!-- placeholder node --></span>
+    <span class="colelem placeholder" data-placeholder-for="u1305_content"><!-- placeholder node --></span>
+    <span class="colelem placeholder" data-placeholder-for="u1288_content"><!-- placeholder node --></span>
+    <span class="colelem placeholder" data-placeholder-for="u1331_content"><!-- placeholder node --></span>
+    <span class="colelem placeholder" data-placeholder-for="u99_content"><!-- placeholder node --></span>
+    <span class="clearfix colelem placeholder" data-placeholder-for="u101-4_content"><!-- placeholder node --></span>
+    <span class="colelem placeholder" data-placeholder-for="u95_content"><!-- placeholder node --></span>
+    <span class="colelem placeholder" data-placeholder-for="u97_content"><!-- placeholder node --></span>
+    <span class="clearfix colelem placeholder" data-placeholder-for="u100-4_content"><!-- placeholder node --></span>
+    <span class="colelem placeholder" data-placeholder-for="u98_content"><!-- placeholder node --></span>
+    <span class="colelem placeholder" data-placeholder-for="u94_content"><!-- placeholder node --></span>
+    <span class="colelem placeholder" data-placeholder-for="u96_content"><!-- placeholder node --></span>
+    <span class="colelem placeholder" data-placeholder-for="u2540_content"><!-- placeholder node --></span>
+    <span class="colelem placeholder" data-placeholder-for="u2577_content"><!-- placeholder node --></span>
+    <div class="verticalspacer" data-offset-top="1103" data-content-above-spacer="1102" data-content-below-spacer="62"></div>
+   </div>
+  </div>
+  <!-- Other scripts -->
+  <script type="text/javascript">
+   window.Muse.assets.check=function(d){if(!window.Muse.assets.checked){window.Muse.assets.checked=!0;var b={},c=function(a,b){if(window.getComputedStyle){var c=window.getComputedStyle(a,null);return c&&c.getPropertyValue(b)||c&&c[b]||""}if(document.documentElement.currentStyle)return(c=a.currentStyle)&&c[b]||a.style&&a.style[b]||"";return""},a=function(a){if(a.match(/^rgb/))return a=a.replace(/\s+/g,"").match(/([\d\,]+)/gi)[0].split(","),(parseInt(a[0])<<16)+(parseInt(a[1])<<8)+parseInt(a[2]);if(a.match(/^\#/))return parseInt(a.substr(1),
+16);return 0},g=function(g){for(var f=document.getElementsByTagName("link"),i=0;i<f.length;i++)if("text/css"==f[i].type){var h=(f[i].href||"").match(/\/?css\/([\w\-]+\.css)\?crc=(\d+)/);if(!h||!h[1]||!h[2])break;b[h[1]]=h[2]}f=document.createElement("div");f.className="version";f.style.cssText="display:none; width:1px; height:1px;";document.getElementsByTagName("body")[0].appendChild(f);for(i=0;i<Muse.assets.required.length;){var h=Muse.assets.required[i],l=h.match(/([\w\-\.]+)\.(\w+)$/),k=l&&l[1]?
+l[1]:null,l=l&&l[2]?l[2]:null;switch(l.toLowerCase()){case "css":k=k.replace(/\W/gi,"_").replace(/^([^a-z])/gi,"_$1");f.className+=" "+k;k=a(c(f,"color"));l=a(c(f,"backgroundColor"));k!=0||l!=0?(Muse.assets.required.splice(i,1),"undefined"!=typeof b[h]&&(k!=b[h]>>>24||l!=(b[h]&16777215))&&Muse.assets.outOfDate.push(h)):i++;f.className="version";break;case "js":k.match(/^jquery-[\d\.]+/gi)&&d&&d().jquery=="1.8.3"?Muse.assets.required.splice(i,1):i++;break;default:throw Error("Unsupported file type: "+
+l);}}f.parentNode.removeChild(f);if(Muse.assets.outOfDate.length||Muse.assets.required.length)f="Некоторые файлы на сервере могут отсутствовать или быть некорректными. Очистите кэш-память браузера и повторите попытку. Если проблему не удается устранить, свяжитесь с разработчиками сайта.",g&&Muse.assets.outOfDate.length&&(f+="\nOut of date: "+Muse.assets.outOfDate.join(",")),g&&Muse.assets.required.length&&(f+="\nMissing: "+Muse.assets.required.join(",")),alert(f)};location&&location.search&&location.search.match&&location.search.match(/muse_debug/gi)?setTimeout(function(){g(!0)},5E3):g()}};
+var muse_init=function(){require.config({baseUrl:""});require(["jquery","museutils","whatinput","jquery.watch","jquery.museresponsive"],function(d){var $ = d;$(document).ready(function(){try{
+window.Muse.assets.check($);/* body */
+Muse.Utils.transformMarkupToFixBrowserProblemsPreInit();/* body */
+Muse.Utils.prepHyperlinks(true);/* body */
+Muse.Utils.fullPage('#page');/* 100% height page */
+$( '.breakpoint' ).registerBreakpoint();/* Register breakpoints */
+Muse.Utils.transformMarkupToFixBrowserProblems();/* body */
+}catch(b){if(b&&"function"==typeof b.notify?b.notify():Muse.Assert.fail("Error calling selector function: "+b),false)throw b;}})})};
+
+</script>
+  <!-- RequireJS script -->
+  <script src="scripts/require.js?crc=4108833657" type="text/javascript" async data-main="scripts/museconfig.js?crc=169177150" onload="if (requirejs) requirejs.onError = function(requireType, requireModule) { if (requireType && requireType.toString && requireType.toString().indexOf && 0 <= requireType.toString().indexOf('#scripterror')) window.Muse.assets.check(); }" onerror="window.Muse.assets.check();"></script>
+   </body>
+</html>
