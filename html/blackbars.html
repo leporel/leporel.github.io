@@ -1,0 +1,72 @@
+<html>
+
+<head>
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js">
+</script>
+
+<script>
+$(document).ready(function(){
+
+      function param(name) {
+			return (location.search.split(name + '=')[1] || '').split('&')[0];
+		}
+	  
+	  
+	  if(param("height") != ""){
+	  $("div").css("height",param("height"));
+	  }
+	  
+
+	  var speed1;
+	  if(param("speed") != ""){
+		speed1 = param("speed");
+	  } else { speed1 = 200; }
+	  
+	 
+	  $( "div" ).slideDown( parseInt(speed1) , "swing");
+	 
+	  if(param("sound") == 1){
+		var audio1 = new Audio(); 
+		audio1.src = "Inception.mp3";
+		audio1.volume = 1;
+		audio1.play();
+		}
+
+});
+
+
+</script>
+
+<style type="text/css">
+body
+{
+background-color: rgba(0, 255, 0, 1);
+overflow:hidden;
+}
+div
+{
+background-color: rgba(0, 0, 0, 1);
+width: 110%;
+left: -10;
+height: 180;
+display: none;
+}
+#footer {
+position : absolute;
+bottom : -10;
+}
+#header {
+position : absolute;
+top : -10;
+}
+</style>
+
+</head>
+
+<body>
+<div id="header"></div>
+<div id="footer"></div>
+</body>
+
+</html>
