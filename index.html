@@ -103,11 +103,11 @@ color: #ffffff;
 font-size: 18px;
 background-size: cover;
 }
-
 body
 {
 background-color: #000000;
 }
+
 
 .buttonText {
   color: #fff;
@@ -131,11 +131,10 @@ a:hover {
   color: #7396ff;
 }
 
-#button1 {
+##button1 {
   background: rgba(0, 0, 0, 0.0);
   border: 2px solid rgba(102,102,102,0.8);
   height: 53px;
-  width: 53px;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 3px;
   overflow: hidden;
@@ -162,12 +161,44 @@ a:hover {
   transition: All 0.5s ease;
   
 }  
-
 #button1:hover {
   width: 200px;
   background: rgba(102,102,102,0.4);
 }
 
+
+@media (min-width: 471px) and (max-width: 1075px)
+{
+#button1 {
+  width: 53px;
+}
+
+}
+
+@media (min-width: 1076px) and (max-width: 1700px)
+{
+#button1 {
+  width: 200px;
+  background: rgba(102,102,102,0.4);
+}
+}
+
+
+@media (min-width: 1701px), print
+{
+#button1 {
+  width: 200px;
+  background: rgba(102,102,102,0.4);
+}
+}
+
+@media (max-width: 470px)
+{
+#button1 {
+  width: 200px;
+  background: rgba(102,102,102,0.4);
+}
+}
 
 #button2
 {
@@ -221,6 +252,7 @@ background-color:rgba(0, 0, 0, 1.00);
 max-height: 1279px;
 max-width: 2027px;
 }
+
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
