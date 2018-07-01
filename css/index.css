@@ -289,11 +289,6 @@ body
 
 @media (min-width: 1076px) and (max-width: 1700px)
 {
-	#button1 {
-	  width: 200px !important; 
-	  background: rgba(102,102,102,0.4) !important;  
-	}
-	
 	#muse_css_mq
 	{
 		background-color: #0006a4;
@@ -535,11 +530,7 @@ body
 
 @media (min-width: 471px) and (max-width: 1075px)
 {
-	#button1 {
-	  width: 200px !important; 
-	  background: rgba(102,102,102,0.4) !important;  
-	}
-	
+
 	#muse_css_mq
 	{
 		background-color: #000433;
@@ -772,10 +763,7 @@ body
 
 @media (max-width: 470px)
 {
-	#button1 {
-	  width: 200px !important; 
-	  background: rgba(102,102,102,0.4) !important;  
-	}
+
 	
 	#muse_css_mq
 	{
