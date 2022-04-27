@@ -665,7 +665,7 @@ max-width: 2027px; */
       require.config({ baseUrl: "" }); require(["jquery", "museutils", "whatinput", "jquery.watch", "jquery.museresponsive"], function (d) {
         var $ = d; $(document).ready(function () {
           try {
-            window.Muse.assets.check($);/* body */
+           // window.Muse.assets.check($);/* body */
             Muse.Utils.transformMarkupToFixBrowserProblemsPreInit();/* body */
             Muse.Utils.prepHyperlinks(true);/* body */
             Muse.Utils.fullPage('#page');/* 100% height page */
